@@ -12,8 +12,8 @@ const Question = () => {
 
     return (
         <div className="question">
-            <h1>Question</h1>
-            <p>Are you crazy, man?</p>
+            <h1>Вопрос №1</h1>
+            <p>Нужно откатить изменения?</p>
             <Link to="/solutions">
                 <button class="btn btn-yes" value="yes" onClick={decide}>
                     ДА
