@@ -1,24 +1,28 @@
 package main
 
 import (
-	"fmt"
-	"log"
-
-	"github.com/ProstoyVadila/fuckgit/config"
+	conf "github.com/ProstoyVadila/fuckgit/config"
+	"github.com/rs/zerolog/log"
 )
 
-func main() {
-	log.Println("Loading config...")
-	config, err := config.New("./")
-	if err != nil {
-		log.Fatalln(err)
-	}
-	fmt.Println(config.GinMode)
+func init() {
+	conf.SetLogger()
+}
 
-	log.Println("Starting server...")
+func main() {
+	log.Info().Msg("Loading config...")
+	config, err := conf.New("./")
+	if err != nil {
+		log.Fatal().Err(err).Msg("Failed to load config")
+	}
+
+	config.SetGinMode()
+
+	log.Info().Msg("Starting server...")
 	app, err := NewApp(config)
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatal().Err(err).Msg("Failed to start server")
 	}
-	log.Println(app.config.Addr)
+
+	app.Run()
 }

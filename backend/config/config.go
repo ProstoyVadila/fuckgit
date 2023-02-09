@@ -1,6 +1,9 @@
 package config
 
-import "github.com/spf13/viper"
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/spf13/viper"
+)
 
 // Config is the configuration for the backend.
 type Config struct {
@@ -18,4 +21,8 @@ func New(path string) (config *Config, err error) {
 	}
 	err = viper.Unmarshal(&config)
 	return
+}
+
+func (c *Config) SetGinMode() {
+	gin.SetMode(c.GinMode)
 }
