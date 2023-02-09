@@ -23,6 +23,6 @@ func main() {
 		log.Fatal().Err(err).Msg("Failed to start server")
 	}
 
-	log.Info().Str("Starting server on address", config.Addr)
+	log.Info().Str("address", config.Addr).Msg("Starting server...")
 	app.Run()
 }

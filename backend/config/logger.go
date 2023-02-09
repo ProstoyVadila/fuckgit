@@ -1,10 +1,10 @@
 package config
 
 import (
-	"time"
-
 	"github.com/rs/zerolog"
 )
+
+const TimeFormat = "02.01.2006 15:04:05.000000000Z07"
 
 func SetLogger(logLevels ...zerolog.Level) {
 	var logLevel zerolog.Level
@@ -13,6 +13,6 @@ func SetLogger(logLevels ...zerolog.Level) {
 	} else {
 		logLevel = logLevels[0]
 	}
-	zerolog.TimeFieldFormat = zerolog.TimestampFunc().UTC().Format(time.RFC3339)
+	zerolog.TimeFieldFormat = TimeFormat
 	zerolog.SetGlobalLevel(logLevel)
 }
