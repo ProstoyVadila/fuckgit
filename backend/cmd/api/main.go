@@ -18,11 +18,11 @@ func main() {
 
 	config.SetGinMode()
 
-	log.Info().Msg("Starting server...")
 	app, err := NewApp(config)
 	if err != nil {
 		log.Fatal().Err(err).Msg("Failed to start server")
 	}
 
+	log.Info().Str("Starting server on address", config.Addr)
 	app.Run()
 }

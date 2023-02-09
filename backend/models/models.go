@@ -23,6 +23,13 @@ type Questions struct {
 	LastID int       `json:"last_id"`
 }
 
+func NewSolution(url string, id int) *Solution {
+	return &Solution{
+		URL: url,
+		ID:  id,
+	}
+}
+
 func NewContent(name, body string) *Content {
 	return &Content{
 		Name: name,
@@ -30,10 +37,15 @@ func NewContent(name, body string) *Content {
 	}
 }
 
-func NewQuestion(content *Content, id int) *Question {
+func NewQuestion(content *Content, id int, solutions ...*Solution) *Question {
+	var solution *Solution
+	if len(solutions) > 0 {
+		solution = solutions[0]
+	}
 	return &Question{
-		Content: content,
-		ID:      id,
+		Content:  content,
+		ID:       id,
+		Solution: solution,
 	}
 }
 
@@ -43,25 +55,24 @@ func NewQuestions() *Questions {
 	}
 }
 
-func (qs *Questions) Insert(content *Content, isRight bool) {
+func (qs *Questions) Insert(content *Content, isRight bool, solutions ...*Solution) {
 	if qs.Root == nil {
 		qs.Root = &Question{
 			Content: content,
-			ID:      0,
+			ID:      qs.LastID,
 		}
 		qs.LastID++
 		return
 	}
 
-	qs.Root.insert(content, qs.LastID, isRight)
+	qs.Root.insert(content, qs.LastID, isRight, solutions...)
 	qs.LastID++
 }
 
 func (q *Question) insert(content *Content, id int, isRight bool, solutions ...*Solution) {
-	// TODO: add Solutions
 	if isRight {
-		q.Right = NewQuestion(content, id)
+		q.Right = NewQuestion(content, id, solutions...)
 	} else {
-		q.Left = NewQuestion(content, id)
+		q.Left = NewQuestion(content, id, solutions...)
 	}
 }
