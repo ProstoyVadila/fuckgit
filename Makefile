@@ -8,7 +8,7 @@ down:
 	@echo "Stopping docker containers..."
 	docker compose down
 
-up_build: build_back
+up_build:
 	@echo "Stopping docker images (if running...)"
 	docker compose down
 	@echo "Starting docker containers with build..."
