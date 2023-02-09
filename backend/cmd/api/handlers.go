@@ -7,7 +7,7 @@ import (
 )
 
 func (a *App) ping(ctx *gin.Context) {
-	finishSuccefull(ctx, "pong")
+	finishSuccessfully(ctx, "pong")
 }
 
 func (a *App) questions(ctx *gin.Context) {
@@ -16,5 +16,5 @@ func (a *App) questions(ctx *gin.Context) {
 		finishWithError(ctx, err, http.StatusNotFound)
 		return
 	}
-	finishSuccefull(ctx, questions)
+	finishSuccessfully(ctx, questions)
 }
