@@ -1,0 +1,35 @@
+.question {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 1.5;
+    color: var(--black-color);
+    background-color: var(--white-color);
+}
+
+.brn {
+    grid-row: inherit;
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.previous {
+    background-color: var(--white-color);
+    color: var(--black-color);
+    border: 1px solid var(--white-color);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.previous:hover {
+    background-color: var(--blue-color);
+    color: var(--black-color);
+    border: 1px solid var(--blue-color);
+}
