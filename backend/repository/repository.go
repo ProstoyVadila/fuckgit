@@ -34,35 +34,35 @@ func mockQuestions() *models.Questions {
 			Solution: &models.Solution{
 				URL: "/",
 			},
-			Right: &models.Question{
-				Name: "locally",
-				Body: "Нужно откатить изменения локально?",
+		},
+		Right: &models.Question{
+			Name: "locally",
+			Body: "Нужно откатить изменения локально?",
+			Left: &models.Question{
+				Name: "remotely",
+				Body: "Нужно откатить изменения в удаленном репозитории???",
 				Left: &models.Question{
-					Name: "remotely",
-					Body: "Нужно откатить изменения в удаленном репозитории???",
-					Left: &models.Question{
-						Name: "unknown",
-						Body: "Тогда не знаю, чем помочь, друг",
-						Solution: &models.Solution{
-							URL: "/",
-						},
-					},
-					Right: &models.Question{
-						Name: "remotely_true",
-						Solution: &models.Solution{
-							URL:         "/solution",
-							Command:     "git push --force blabla",
-							Description: "Откатить изменения в удаленном репозитории",
-						},
+					Name: "unknown",
+					Body: "Тогда не знаю, чем помочь, друг",
+					Solution: &models.Solution{
+						URL: "/",
 					},
 				},
 				Right: &models.Question{
-					Name: "locally_true",
+					Name: "remotely_true",
 					Solution: &models.Solution{
 						URL:         "/solution",
-						Command:     "git reset --hard HEAD~1",
-						Description: "Откатить изменения локально, cтерев их из истории",
+						Command:     "git push --force blabla",
+						Description: "Откатить изменения в удаленном репозитории",
 					},
+				},
+			},
+			Right: &models.Question{
+				Name: "locally_true",
+				Solution: &models.Solution{
+					URL:         "/solution",
+					Command:     "git reset --hard HEAD~1",
+					Description: "Откатить изменения локально, cтерев их из истории",
 				},
 			},
 		},
