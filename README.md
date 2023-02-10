@@ -28,8 +28,23 @@ make run_front
 наверное?
 
 
-## Ручка /questions
-возвращает в  `payload` бинарное дерево, где Right - ответ "да", Left - ответ "нет".
+## Ручка `/questions`
+возвращает в  `payload` бинарное дерево из объектов Question.
+
+`root` — объект `Question`, корень дерева;
+
+`left` и `right` — тоже обекты `Question`, потомки корня на ответ "нет" и "да" соответственно.
+
+```json
+{
+  "status": "ok",
+  "payload": {
+    "root": ...
+  }
+}
+```
+
+### Пример
 
 ```json
 {
@@ -102,7 +117,15 @@ make run_front
 ## Модели
 
 ### Solution
-`solution` содержит `url` для перенаправления, `description` — описание решения, и `command` — команду для решение проблемы.
+`solution` содержит `url` для ссылки на документацию, `description` — описание решения, и `command` — команду для решение проблемы.
+```go
+type Solution struct {
+	URL         string `json:"url"`
+	Command     string `json:"command"`
+	Description string `json:"description"`
+}
+```
+### Пример
 ```json
 {
     "url": "/solution",
@@ -115,23 +138,27 @@ make run_front
 `question ` содержит в себе `name`, `body`, `solution` и `left` и `right` поля.
 
 - `body` - текст вопроса
-- `name` - внутреннее название вопроса
+- `name` - внутреннее название вопроса (для удобства и возможно поиска в будущем)
+```go
+type Question struct {
+    Left     *Question `json:"left"`
+    Right    *Question `json:"right"`
+    Solution *Solution `json:"solution"`
+    Name     string    `json:"name"`
+    Body     string    `json:"body"`
+}
+```
+### Пример
 ```json
 {
-    "left": {
-        "left": null,
-        "right": null,
-        "solution": {
-            "url": "/solution",
+    "left": null,
+    "right": null,
+    "solution": {
+            "url": "https://git-scm.com/docs/git-reset",
             "command": "git reset --hard HEAD~1",
             "description": "Откатить изменения локально, cтерев их из истории"
-        },
-        "name": "locally_true",
-        "body": ""
-    },
-    "right": null,
-    "solution": null,
-    "name": "start",
-    "body": "Нужно откатить изменения?"
+        },,
+    "name": "end",
+    "body": "Нужно откатить только локальные изменения?"
 }
 ```
