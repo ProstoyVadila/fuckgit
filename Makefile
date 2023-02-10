@@ -27,6 +27,10 @@ run_back:
 
 run: run_front run_back
 
+install_front:
+	@echo "Installing frontend dependencies..."
+	@cd frontend && npm install
+
 build_front:
 	@echo "Building frontend..."
 	@cd frontend && npm run build
