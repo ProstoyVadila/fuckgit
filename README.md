@@ -37,49 +37,7 @@ make run_front
     "root": {
       "left": {
         "left": null,
-        "right": {
-          "left": {
-            "left": {
-              "left": null,
-              "right": null,
-              "solution": {
-                "url": "/",
-                "command": "",
-                "description": ""
-              },
-              "name": "unknown",
-              "body": "Тогда не знаю, чем помочь, друг"
-            },
-            "right": {
-              "left": null,
-              "right": null,
-              "solution": {
-                "url": "/solution",
-                "command": "git push --force blabla",
-                "description": "Откатить изменения в удаленном репозитории"
-              },
-              "name": "remotely_true",
-              "body": ""
-            },
-            "solution": null,
-            "name": "remotely",
-            "body": "Нужно откатить изменения в удаленном репозитории???"
-          },
-          "right": {
-            "left": null,
-            "right": null,
-            "solution": {
-              "url": "/solution",
-              "command": "git reset --hard HEAD~1",
-              "description": "Откатить изменения локально, cтерев их из истории"
-            },
-            "name": "locally_true",
-            "body": ""
-          },
-          "solution": null,
-          "name": "locally",
-          "body": "Нужно откатить изменения локально?"
-        },
+        "right": null,
         "solution": {
           "url": "/",
           "command": "",
@@ -88,7 +46,49 @@ make run_front
         "name": "unknown",
         "body": "Тогда не знаю, чем помочь, друг"
       },
-      "right": null,
+      "right": {
+        "left": {
+          "left": {
+            "left": null,
+            "right": null,
+            "solution": {
+              "url": "/",
+              "command": "",
+              "description": ""
+            },
+            "name": "unknown",
+            "body": "Тогда не знаю, чем помочь, друг"
+          },
+          "right": {
+            "left": null,
+            "right": null,
+            "solution": {
+              "url": "/solution",
+              "command": "git push --force blabla",
+              "description": "Откатить изменения в удаленном репозитории"
+            },
+            "name": "remotely_true",
+            "body": ""
+          },
+          "solution": null,
+          "name": "remotely",
+          "body": "Нужно откатить изменения в удаленном репозитории???"
+        },
+        "right": {
+          "left": null,
+          "right": null,
+          "solution": {
+            "url": "/solution",
+            "command": "git reset --hard HEAD~1",
+            "description": "Откатить изменения локально, cтерев их из истории"
+          },
+          "name": "locally_true",
+          "body": ""
+        },
+        "solution": null,
+        "name": "locally",
+        "body": "Нужно откатить изменения локально?"
+      },
       "solution": null,
       "name": "start",
       "body": "Нужно откатить изменения?"
@@ -96,6 +96,7 @@ make run_front
   },
   "status": "ok"
 }
+
 ```
 
 ## Модели
