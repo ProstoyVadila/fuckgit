@@ -10,7 +10,7 @@ func init() {
 }
 
 func main() {
-	log.Info().Msg("Loading config...")
+	log.Info().Msg("Loading config")
 	config, err := conf.New("./")
 	if err != nil {
 		log.Fatal().Err(err).Msg("Failed to load config")
@@ -23,6 +23,6 @@ func main() {
 		log.Fatal().Err(err).Msg("Failed to start server")
 	}
 
-	log.Info().Str("address", config.Addr).Msg("Starting server...")
+	log.Info().Str("address", config.Addr).Msg("Starting server")
 	app.Run()
 }
