@@ -1,7 +1,11 @@
 package repository
 
 import (
+	"context"
+
+	"github.com/ProstoyVadila/fuckgit/config"
 	"github.com/ProstoyVadila/fuckgit/models"
+	neo4j_db "github.com/ProstoyVadila/fuckgit/repository/neo4j"
 )
 
 const (
@@ -10,16 +14,16 @@ const (
 )
 
 type Store interface {
-	Questions() (*models.Questions, error)
+	Questions(context.Context) (*models.Questions, error)
 }
 
 type Mock struct{}
 
-func New() Store {
-	return &Mock{}
+func New(config *config.Config) Store {
+	return neo4j_db.New(*config)
 }
 
-func (m *Mock) Questions() (*models.Questions, error) {
+func (m *Mock) Questions(ctx context.Context) (*models.Questions, error) {
 	return mockQuestions(), nil
 }
 

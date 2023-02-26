@@ -7,8 +7,14 @@ import (
 
 // Config is the configuration for the backend.
 type Config struct {
-	GinMode string `mapstructure:"GIN_MODE"`
-	Addr    string `mapstructure:"ADDRESS"`
+	GinMode       string `mapstructure:"GIN_MODE"`
+	Addr          string `mapstructure:"ADDRESS"`
+	Neo4jURL      string `mapstructure:"NEO4J_URL"`
+	Neo4jUser     string `mapstructure:"NEO4J_USER"`
+	Neo4jPassword string `mapstructure:"NEO4J_PASSWORD"`
+}
+
+type Neo4j struct {
 }
 
 func New(path string) (config *Config, err error) {

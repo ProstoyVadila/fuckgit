@@ -15,7 +15,7 @@ type App struct {
 func NewApp(config *config.Config) (*App, error) {
 	app := &App{
 		config: config,
-		store:  repository.New(),
+		store:  repository.New(config),
 		router: gin.New(),
 	}
 
